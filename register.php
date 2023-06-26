@@ -2,6 +2,7 @@
     session_start();
     include('config.php');
     if (isset($_POST['register'])) {
+        $name = $_POST['name'];
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -15,7 +16,8 @@
         }
 
         if ($query->rowCount() == 0) {
-            $query = $connection->prepare("INSERT INTO users(username, email, password) VALUES (:username, :email,:password_hash)");
+            $query = $connection->prepare("INSERT INTO users(name, username, email, password) VALUES (:name, :username, :email,:password_hash)");
+            $query->bindParam("name", $name, type: PDO::PARAM_STR);
             $query->bindParam("username", $username, type: PDO::PARAM_STR);
             $query->bindParam("email", $email, PDO::PARAM_STR);
             $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
@@ -43,6 +45,9 @@
         <h1>User Registration</h1>
 
         <form method="post" action="">
+            <div class="form-element">
+                <label>name: <input type="text" name="name" pattern="[a-zA-Z]+" required /></label
+            </div>
             <div class="form-element">
                 <label>Username: <input type="text" name="username" pattern="[a-zA-Z0-9]+" required /></label
             </div>

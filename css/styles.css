@@ -111,6 +111,11 @@ input[type="date"] {
     overflow: hidden;
 }
 
+.topnav .nav-title {
+    text-align: left;
+    float: left;
+}
+
 .topnav a {
     float: right;
     display: inline-block;
@@ -148,6 +153,10 @@ input[type="date"] {
     .topnav a.icon {
         float: right;
         display: block;
+    }
+    .topnav .nav-title {
+        text-align: center;
+        justify-content: center;
     }
 }
 

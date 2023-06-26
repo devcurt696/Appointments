@@ -1,13 +1,18 @@
 <?php
-    include("config.php");
-    $data = $connection->query("SELECT * FROM appointments")->fetchAll();
-    ?>
+    session_start();
+    include ("config.php");
+    $userId = isset($_GET['uid']) ? trim($_GET['uid']) : '';
+    $appt_data = $connection->prepare("SELECT * FROM appointments WHERE user_id=:user_id");
+    $appt_data->bindParam("user_id", $userId, PDO::PARAM_INT);
+    $appt_data->execute();
+
+?>
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width,initial-scale=1.0" name="viewport">
-        <title>Appointments</title>
+        <title>DevCurt - Appointments</title>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script>
@@ -29,12 +34,14 @@
 
     <body>
         <nav class="topnav" id="topnav">
+
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
 
             <a name="signout" href="logout.php">Sign Out</a>
-            <a href="user.html">Back to User Dashboard</a>
+            <a href="user.php?uid=<?php echo $_SESSION['user_id'];?>" >Back to User Dashboard</a>
+            <h1 class="nav-title">DevCurt</h1>
         </nav>
 
         <h1>Appointments</h1>
@@ -53,7 +60,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data as $row) { ?>
+                    <?php foreach ($appt_data as $row) { ?>
                     <tr>
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['appt_date']; ?></td>
@@ -67,7 +74,7 @@
             </table>
         </section>
         <br>
-        <button><a href="book_appt.php">Book Appointment</a></button>
+        <button><a href="book_appt.php?uid=<?php echo $userId;?>">Book Appointment</a></button>
 
         <script>
             function myFunction() {

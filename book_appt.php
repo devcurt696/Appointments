@@ -1,5 +1,7 @@
 <?php
+session_start();
 include("config.php");
+$userId = isset($_GET['uid']) ? trim($_GET['uid']) : '';
 if (isset($_POST['book'])) {
     $apptDate = $_POST['appt_date'];
     $apptTime = $_POST['appt_time'];
@@ -9,13 +11,15 @@ if (isset($_POST['book'])) {
             'appt_date' => $apptDate,
             'appt_time' => $apptTime,
             'reason' => $reason,
+            'user_id' => $userId
     ];
-    $query = $connection->prepare("INSERT INTO appointments (appt_date, appt_time, reason) VALUES (:appt_date, :appt_time, :reason)");
+    $query = $connection->prepare("INSERT INTO appointments (appt_date, appt_time, reason, user_id) VALUES (:appt_date, :appt_time, :reason, :user_id)");
 
     $result = $query->execute($data);
 
     if ($result) {
         echo '<p class="error">Success! Appointment booked</p>';
+        header("Location: appointments.php?uid=$userId");
     } else {
         echo '<p class="error">Unknown error!</p>';
     }
@@ -39,16 +43,17 @@ if (isset($_POST['book'])) {
 
         <a name="signout" href="logout.php">Sign Out</a>
         <a href="appointments.php">Appointments</a>
+        <h1 class="nav-title">DevCurt</h1>
     </nav>
     <h2>Book an appointment: </h2>
     <section>
         <form method="post" action="">
 
-            <label for="appt_date">Date: <input type="date" name="appt_date" placeholder="mm/dd/yyyy"/></label>
+            <label for="appt_date">Date: <input type="date" name="appt_date" placeholder="mm/dd/yyyy" required/></label>
             <br>
-            <label for="appt_time">Time: <input type="time" name="appt_time" /></label>
+            <label for="appt_time">Time: <input type="time" name="appt_time" required/></label>
             <br>
-            <label for="reason">Reason: <textarea name="reason" minlength="10" maxlength="50"></textarea></label>
+            <label for="reason">Reason: <textarea name="reason" minlength="10" maxlength="50" required></textarea></label>
             <br>
             <button type="submit" name="book" value="book">Book Appointment</button>
         </form>

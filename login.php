@@ -23,7 +23,8 @@
            header('Location: login.php');
            exit;
        } else {
-           header('Location: user.html');
+           $userId = $_SESSION['user_id'];
+           header("Location: user.php?uid=$userId");
            exit;
        }
     }
@@ -53,6 +54,7 @@
             <br>
 
                 <p>Not a user? <a href="register.php">Register</a> </p>
+            <p>Forgot your password? <a href="resetPassword.php">Reset Password</a> </p>
         </form>
     </body>
 </html>
