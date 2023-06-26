@@ -3,7 +3,7 @@ session_start();
 include("config.php");
 
 if (isset($_POST['changePass'])) {
-    $id = $_POST['user_id'];
+    $id = isset($_GET['uid']) ? trim($_GET['uid']) : '';
     $newPassword = $_POST['new_password'];
     $password_hash = password_hash($newPassword, PASSWORD_BCRYPT);
     $update = $connection->prepare("UPDATE users SET password = :password WHERE user_id=:id");
@@ -31,13 +31,13 @@ if (isset($_POST['changePass'])) {
         <form method="post">
 
             <div class="form-element">
-                <label>id: <input type="number" name="user_id" required/></label>
+                <label>id: <?php echo $_GET['uid']?></label>
             </div>
             <div class="form-element">
                 <label>New Password: <input type="password" name="new_password" required/></label>
             </div>
 
-            <button type="submit" name="changePass" value="login">Change Password</button>
+            <button type="submit" name="changePass" value="change">Change Password</button>
             <br>
 
 

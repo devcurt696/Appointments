@@ -50,15 +50,33 @@ button {
     padding: 10px;
     font-family: Century, sans-serif;
     font-weight: 100;
-    background: #16eeee;
-    color: white;
+    background: lawngreen;
+    color: darkblue;
     border: none;
     position: inherit;
+    height: auto;
+    width: auto;
 
 }
 
+#submitEmail {
+    padding: 10px;
+    font-family: Century, sans-serif;
+    font-weight: 100;
+    background: lawngreen;
+    color: darkblue;
+    border: none;
+    position: inherit;
+    height: auto;
+    width: auto;
+    justify-self: right;
+    float: right;
+    top: 250px;
+
+}
 button a {
     text-decoration: none;
+    color: darkblue;
 }
 
 .redirect {
@@ -87,8 +105,8 @@ table {
     width: 90%;
 }
 th {
-    background-color: #2ca3d5;
-    color: black;
+    background-color: blue;
+    color: white;
 
 }
 

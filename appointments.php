@@ -43,7 +43,7 @@
             <a href="user.php?uid=<?php echo $_SESSION['user_id'];?>" >Back to User Dashboard</a>
             <h1 class="nav-title">DevCurt</h1>
         </nav>
-
+        <br>
         <h1>Appointments</h1>
 
         <section>

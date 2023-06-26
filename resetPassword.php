@@ -10,7 +10,7 @@
     <form method="post" action="sendLink.php">
         <p>Enter your email to send a password reset link.</p>
         <label for="email">Email: <input type="email" name="email"/></label>
-        <input type="submit" name="submitEmail" />
+        <button type="submit" name="submitEmail" id="submitEmail">submit</button>
     </form>
 </body>
 </html>

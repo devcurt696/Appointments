@@ -42,7 +42,7 @@ if (isset($_POST['book'])) {
         </a>
 
         <a name="signout" href="logout.php">Sign Out</a>
-        <a href="appointments.php">Appointments</a>
+        <a href="appointments.php?uid=<?php echo $userId; ?>">Appointments</a>
         <h1 class="nav-title">DevCurt</h1>
     </nav>
     <h2>Book an appointment: </h2>

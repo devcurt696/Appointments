@@ -28,9 +28,11 @@ session_start();
         <a href="appointments.php?uid=<?php echo $userId; ?>">Appointments</a>
         <h1 class="nav-title">DevCurt</h1>
     </nav>
-
+    <br>
     <h1>Welcome to your devcurt profile, <?php echo $res['name'];?>!</h1>
     <p>Use the buttons below to manage your account.</p>
+<br>
+    <button><a href="resetPassword.php">Reset Password</a> </button>
 
     <br>
     <script>

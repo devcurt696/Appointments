@@ -28,7 +28,9 @@ $statement->execute(array(
 ));
 
 $passwordRequestId = $connection->lastInsertId();
-$verifyScript = 'http://localhost/Appointments/forgot_pass.php';
+$verifyScript = "http://localhost/Appointments/forgot_pass.php";
 $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&t=' . $token;
-header("Location: $linkToSend");
+$mesage = "Hello $email - id: $userId, your link to reset  password $linkToSend";
+mail($email,"Password reset", $mesage,);
+header("Location: login.php");
 ?>
