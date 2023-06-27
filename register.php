@@ -1,6 +1,7 @@
 <?php
     session_start();
     include('config.php');
+    $userId = 1;
     if (isset($_POST['register'])) {
         $name = $_POST['name'];
         $username = $_POST['username'];
@@ -16,7 +17,9 @@
         }
 
         if ($query->rowCount() == 0) {
-            $query = $connection->prepare("INSERT INTO users(name, username, email, password) VALUES (:name, :username, :email,:password_hash)");
+            $userId++;
+            $query = $connection->prepare("INSERT INTO users(user_id, name, username, email, password) VALUES (:user_id, :name, :username, :email,:password_hash)");
+            $query->bindParam("user_id", $name, type: PDO::PARAM_INT);
             $query->bindParam("name", $name, type: PDO::PARAM_STR);
             $query->bindParam("username", $username, type: PDO::PARAM_STR);
             $query->bindParam("email", $email, PDO::PARAM_STR);
@@ -39,14 +42,19 @@
         <meta content="width=device-width,initial-scale=1.0" name="viewport">
        <title>Register</title>
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="images/icons8-schedule-30.png">
     </head>
 
     <body>
+        <nav class="topnav" id="topnav">
+            <h1 class="nav-title"><img src="images/icons8-schedule-30.png" alt="schedule" style="height: 40px; width: 45px;"/>SchedulePro</h1>
+        </nav>
+        <br>
         <h1>User Registration</h1>
 
         <form method="post" action="">
             <div class="form-element">
-                <label>name: <input type="text" name="name" pattern="[a-zA-Z]+" required /></label
+                <label>name: <input type="text" name="name" required /></label
             </div>
             <div class="form-element">
                 <label>Username: <input type="text" name="username" pattern="[a-zA-Z0-9]+" required /></label

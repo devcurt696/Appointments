@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("config.php");
-$userId = isset($_GET['uid']) ? trim($_GET['uid']) : '';
+$userId = $_SESSION['user_id'];
 if (isset($_POST['book'])) {
     $apptDate = $_POST['appt_date'];
     $apptTime = $_POST['appt_time'];
@@ -31,21 +31,25 @@ if (isset($_POST['book'])) {
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width,initial-scale=1.0" name="viewport">
-        <title>Book Appointment</title>
+        <title>SchedulePro - Book Appointment</title>
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="images/icons8-schedule-30.png">
     </head>
     <body>
     <nav class="topnav" id="topnav">
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="toggleResponsive()">
             <i class="fa fa-bars"></i>
         </a>
 
         <a name="signout" href="logout.php">Sign Out</a>
         <a href="appointments.php?uid=<?php echo $userId; ?>">Appointments</a>
-        <h1 class="nav-title">DevCurt</h1>
+        <h1 class="nav-title"><img src="images/icons8-schedule-30.png" alt="schedule" style="height: 35px; width: 40px;"/>SchedulePro</h1>
     </nav>
-    <h2>Book an appointment: </h2>
+
+    <br>
+
+    <h2>Schedule an appointment: </h2>
     <section>
         <form method="post" action="">
 
@@ -55,13 +59,13 @@ if (isset($_POST['book'])) {
             <br>
             <label for="reason">Reason: <textarea name="reason" minlength="10" maxlength="50" required></textarea></label>
             <br>
-            <button type="submit" name="book" value="book">Book Appointment</button>
+            <button type="submit" name="book" value="book">Schedule</button>
         </form>
 
 
     </section>
     <script>
-        function myFunction() {
+        function toggleResponsive() {
             var x = document.getElementById("topnav");
             if (x.className == "topnav") {
                 x.className += " responsive";

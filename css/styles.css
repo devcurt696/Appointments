@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #ffffff;
+    background-color: lightblue;
     margin: 0 auto;
     text-align: center;
     justify-content: center;
@@ -50,21 +50,21 @@ button {
     padding: 10px;
     font-family: Century, sans-serif;
     font-weight: 100;
-    background: lawngreen;
-    color: darkblue;
+    background: blue;
+    color: white;
     border: none;
     position: inherit;
     height: auto;
     width: auto;
-
+    border-radius: 25px;
 }
 
 #submitEmail {
     padding: 10px;
     font-family: Century, sans-serif;
     font-weight: 100;
-    background: lawngreen;
-    color: darkblue;
+    background: blue;
+    color: white;
     border: none;
     position: inherit;
     height: auto;
@@ -76,7 +76,7 @@ button {
 }
 button a {
     text-decoration: none;
-    color: darkblue;
+    color: white;
 }
 
 .redirect {
@@ -100,19 +100,17 @@ table {
     margin-right: auto;
     overflow-x: auto;
     border-collapse: collapse;
-
     border-radius: 25px;
     width: 90%;
 }
+
 th {
     background-color: blue;
     color: white;
-
 }
 
-
-tr:nth-child(even) {background-color: #b6b3b3;}
-
+tr:nth-child(even) {background-color: #b9b4b4;}
+tr {background-color: #eeeeee}
 
 
 
@@ -130,7 +128,7 @@ input[type="date"] {
 }
 
 .topnav .nav-title {
-    text-align: left;
+    text-align: center;
     float: left;
 }
 
@@ -147,6 +145,7 @@ input[type="date"] {
 .topnav a:hover {
     background-color: white;
     color: darkblue;
+    border-radius: 25px;
 }
 
 .topnav .icon {

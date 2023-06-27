@@ -38,9 +38,14 @@
         <meta content="width=device-width,initial-scale=1.0" name="viewport">
         <title>Login</title>
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="images/icons8-schedule-30.png">
     </head>
 
     <body>
+        <nav class="topnav" id="topnav">
+            <h1 class="nav-title"><img src="images/icons8-schedule-30.png" alt="schedule" style="height: 40px; width: 45px;"/>SchedulePro</h1>
+        </nav>
+        <br>
         <h1>User Login</h1>
         <form method="post">
             <div class="form-element">
